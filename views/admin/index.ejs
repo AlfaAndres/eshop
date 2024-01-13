@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration</title>
+    <link href="/resources/css" rel="stylesheet">
+    <link href="/resources/maincss" rel="stylesheet">
+    <script>
+        async function sendReq(url, method, headers = null, data = null) {
+            const options = { method: method, headers: { "Content-type": "application/json", ...headers } }
+            if (method != "GET" && data != null) options.body = JSON.stringify(data);
+            const res = await fetch(url, options)
+            const text = await res.text()
+            return text;
+        }
+        async function kys() {
+            const result = await sendReq('http://localhost:3000/administration/logout', "GET", null, null);
+            window.location.assign('/')
+        }
+
+        let products;
+        document.addEventListener('DOMContentLoaded', async () => {
+            const result = await sendReq('http://localhost:3000/api/products', "GET");
+            const products = JSON.parse(result)
+
+            document.getElementById('p1_image').src = "data:image/png;base64," + products[0].photo
+            document.getElementById('p1_name').innerText = products[0].name
+            document.getElementById('p1_price').innerText = products[0].price
+            document.getElementById('p1_desc').innerText = products[0].description
+
+            document.getElementById('p2_image').src = "data:image/png;base64," + products[1].photo
+            document.getElementById('p2_name').innerText = products[1].name
+            document.getElementById('p2_price').innerText = products[1].price
+            document.getElementById('p2_desc').innerText = products[1].description
+
+            document.getElementById('p3_image').src = "data:image/png;base64," + products[2].photo
+            document.getElementById('p3_name').innerText = products[2].name
+            document.getElementById('p3_price').innerText = products[2].price
+            document.getElementById('p3_desc').innerText = products[2].description
+        })
+    </script>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    main {
+        flex: 1;
+    }
+    .product-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .product {
+        flex-basis: 30%;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        margin: 0.5rem;
+        text-align: center;
+        position: relative;
+    }
+    .remove-button, .buy-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .remove-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .buy-button {
+            background-color: green;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .header-title {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .spacer {
+            flex-basis: 80px;
+        }
+</style>
+
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <header class="bg-yellow-300 p-4">
+        <div class="header-content">
+            <div class="header-buttons">
+                <button class="header-button">Přidání uživatele</button>
+                <button class="header-button">Přehlídka</button>
+            </div>
+
+            <h1 class="text-2xl font-bold header-title">Váš jediný obchod pro vše o kuřatech!</h1>
+
+            <button onclick="kys()" class="header-button">logout</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4">
+
+        <section id="featured-products" class="my-4 product-container">
+
+            <div class="product">
+                <h3 class="text-md font-semibold" id="p1_name"></h3>
+                <img id="p1_image" alt="Bílá slepice">
+                <p>Popis: <span id="p1_desc"></span></p>
+                <p class="price-tag">Cena: <span id="p1_price"></span> Kč</p>
+                <button class="buy-button">Koupit</button>
+                <button class="remove-button">Odstranit</button>
+            </div>
+
+            <div class="product">
+                <h3 class="text-md font-semibold" id="p2_name"></h3>
+                <img id="p2_image" alt="Hnědá slepice">
+                <p>Popis: <span id="p2_desc"></span></p>
+                <p class="price-tag">Cena: <span id="p2_price"></span> Kč</p>
+                <button class="buy-button">Koupit</button>
+                <button class="remove-button">Odstranit</button>
+            </div>
+
+            <div class="product">
+                <h3 class="text-md font-semibold" id="p3_name"></h3>
+                <img id="p3_image" alt="Černá slepice">
+                <p>Popis: <span id="p3_desc"></span></p>
+                <p class="price-tag">Cena: <span id="p3_price"></span></p>
+                <button class="buy-button">Koupit</button>
+                <button class="remove-button">Odstranit</button>
+            </div>
+        </section>
+
+        <section id="about-shop" class="my-4">
+            <h2 class="text-xl font-bold text-center">O Obchodě</h2>
+            <p class="text-md text-gray-600 text-center">
+                Vítejte v našem eShopu! Jsme nadšení pro vše, co se týká kuřat a poskytujeme širokou škálu produktů pro milovníky drůbeže. Naším posláním je nabízet vysoce kvalitní produkty, které splňují potřeby našich zákazníků. Snažíme se o udržitelnost a inovace v naší nabídce, abychom zůstali v popředí kuřecího průmyslu. Děkujeme, že jste se rozhodli nakupovat u nás!
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-4 mt-4 bg-gray-200">
+        <p>© 2024 Kuřecí eShop</p>
+    </footer>
+
+</body>
+
+</html>
