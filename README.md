@@ -1,4 +1,4 @@
-## Vypracoval PECHY se spoluprací s José Hernández
+## hehe sranda fakt 
 
 ```bash
 
