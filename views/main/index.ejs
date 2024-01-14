@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-shop</title>
+    <title>FetShop</title>
     <link href="/resources/css" rel="stylesheet">
     <style>
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
+            background-color: #b0b0b0;
         }
         body {
             display: flex;
@@ -17,6 +18,9 @@
         }
         main {
             flex: 1;
+        }
+        .header{
+            background-color: cornflowerblue;
         }
         .product-container {
             display: flex;
@@ -29,6 +33,7 @@
             margin: 0.5rem;
             text-align: center;
             position: relative;
+            background-color: #9ca3af;
         }
         .remove-button, .buy-button {
             background-color: red;
@@ -47,6 +52,34 @@
 
         .buy-button {
             background-color: green;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .header-title {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .spacer {
+            flex-basis: 80px;
         }
     </style>
     <script>
@@ -81,47 +114,56 @@
     </script>
 
 </head>
-<body class="bg-gray-100 font-sans">
-    <header class="bg-yellow-300 text-center p-4">
-        <h1 class="text-2xl font-bold">Váš jediný obchod pro vše o kuřatech!</h1>
-    </header>
-    <main class="container mx-auto p-4">
+<body class="font-sans">
+<header style="background-color: #4c7e93;" class="text-center p-4">
+    <h1 class="text-2xl font-bold">Nejlepší obchod pro feťáky</h1>
+</header>
+<main class="container mx-auto p-4">
 
-        <section id="featured-products" class="my-4 product-container">
+    <section id="featured-products" class="my-4 flex flex-wrap gap-8">
 
-            <div class="product">
-                <h3 class="text-md font-semibold" id="p1_name"></h3>
-                <img id="p1_image" alt="Bílá slepice">
-                <p>Popis: <span id="p1_desc"></span></p>
+        <div class="product bg-white border border-gray-300 rounded-lg overflow-hidden w-64 gap-8">
+            <img id="p1_image" alt="Bílá slepice" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-md font-semibold mb-2" id="p1_name"></h3>
+                <p class="mb-2">Popis: <span id="p1_desc"></span></p>
                 <p class="price-tag">Cena: <span id="p1_price"></span> Kč</p>
-                <a href="/buy/Jedna" class="buy-button">Koupit</a>
+                <a href="/buy/Jedna" class="buy-button mt-2">Koupit</a>
             </div>
+        </div>
 
-            <div class="product">
-                <h3 class="text-md font-semibold" id="p2_name"></h3>
-                <img id="p2_image" alt="Hnědá slepice">
-                <p>Popis: <span id="p2_desc"></span></p>
+        <div class="product bg-white border border-gray-300 rounded-lg overflow-hidden w-64 gap-8">
+            <img id="p2_image" alt="Hnědá slepice" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-md font-semibold mb-2" id="p2_name"></h3>
+                <p class="mb-2">Popis: <span id="p2_desc"></span></p>
                 <p class="price-tag">Cena: <span id="p2_price"></span> Kč</p>
-                <a href="/buy/dva" class="buy-button">Koupit</a>
+                <a href="/buy/dva" class="buy-button mt-2">Koupit</a>
             </div>
+        </div>
 
-            <div class="product">
-                <h3 class="text-md font-semibold" id="p3_name"></h3>
-                <img id="p3_image" alt="Černá slepice">
-                <p>Popis: <span id="p3_desc"></span></p>
+        <div class="product bg-white border border-gray-300 rounded-lg overflow-hidden w-64 gap-8">
+            <img id="p3_image" alt="Černá slepice" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-md font-semibold mb-2" id="p3_name"></h3>
+                <p class="mb-2">Popis: <span id="p3_desc"></span></p>
                 <p class="price-tag">Cena: <span id="p3_price"></span> Kč</p>
-                <a href="/buy/tri" class="buy-button">Koupit</a>
+                <a href="/buy/tri" class="buy-button mt-2">Koupit</a>
             </div>
-        </section>
-        <section id="about-shop" class="my-4">
-            <h2 class="text-xl font-bold text-center">O Obchodě</h2>
-            <p class="text-md text-gray-600 text-center">
-                Vítejte v našem eShopu! Jsme nadšení pro vše, co se týká kuřat a poskytujeme širokou škálu produktů pro milovníky drůbeže. Naším posláním je nabízet vysoce kvalitní produkty, které splňují potřeby našich zákazníků. Snažíme se o udržitelnost a inovace v naší nabídce, abychom zůstali v popředí kuřecího průmyslu. Děkujeme, že jste se rozhodli nakupovat u nás!
-            </p>
-        </section>
-    </main>
-    <footer class="text-center p-4 mt-4 bg-gray-200">
-        <p>© 2024 Kuřecí eShop</p>
-    </footer>
+        </div>
+    </section>
+    <section id="about-shop" class="my-4">
+        <h2  class="text-xl font-bold text-center">O Obchodě</h2>
+        <p  class="text-md text-yellow-400 text-center">rs
+            Kámo, pravý feťáci nakují jedině tady. Pořád přidáváme nový produkty abys ty měl co do nosu. Dík, že tu nakupuješ bratu.
+        </p>
+    </section>
+</main>
+<footer class="text-center p-4 mt-4 bg-white-200">
+    <p>© FetShop</p>
+</footer>
 </body>
+
+
 </html>
+

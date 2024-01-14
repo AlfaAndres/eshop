@@ -62,7 +62,7 @@
             const text = await res.text()
             return text;
         }
-
+        //aaaa
         let products;
         document.addEventListener('DOMContentLoaded', async () => {
             const result = await sendReq('http://localhost:3000/api/products', "GET");
@@ -88,14 +88,14 @@
 </head>
 
 <body>
-    <header class="bg-yellow-300 text-center p-4">
-        <h1 class="text-2xl font-bold">Váš jediný obchod pro vše o kuřatech!</h1>
+    <header style="background-color: #4c7e93;" class="bg-yellow-300 text-center p-4">
+        <h1 class="text-2xl font-bold">Nejlepší obchod pro feťáky</h1>
     </header>
 
     <main class="flex-grow">
         <div class="product">
             <h3 class="text-md font-semibold" id="p2_name"></h3>
-            <img id="p2_image" alt="Černá slepice">
+            <img id="p2_image" alt="Pro Slečinky">
 <p id="p2_desc">Popis: </p>
 <p class="price-tag">Cena: <span id="p2_price"></span> Kč</p>
 <a href="/buy/dva" class="buy-button">Koupit</a>
@@ -103,7 +103,7 @@
 
 </main>
 <footer class="text-center p-4 mt-4 bg-gray-200">
-    <p>© 2024 Kuřecí eShop</p>
+    <p>© FetShop</p>
 </footer>
 
 </body>
